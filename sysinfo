@@ -1,0 +1,27 @@
+#!/bin/bash
+
+###########################
+#    Author: jakepys      #
+###########################
+
+#colors
+off="\e[0m"
+red="\e[31m"
+blue="\e[36m"
+green="\e[32m"
+
+
+function sysinf() {
+  echo -e "$green================================== $off"
+  echo -e "$red Name Kernel: $blue $(uname -s) $off"
+  echo -e "$red hostname: $blue $(uname -n) $off"
+  echo -e "$red kernel-release: $blue $(uname -r) $off"
+  echo -e "$red kernel version: $blue $(uname -v) $off"
+  echo -e "$red hardware: $blue $(uname -m) $off"
+  echo -e "$red processor: $blue $(uname -p) $off"
+  echo -e "$red platform hardware: $blue $(uname -i) $off"
+  echo -e "$red operating system: $blue $(uname -o) $off"
+  echo -e "$green================================== $off"
+}
+
+sysinf
