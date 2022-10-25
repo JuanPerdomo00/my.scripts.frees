@@ -1,0 +1,82 @@
+#!/bin/bash
+
+###############################################
+# Author: Jakepys
+###############################################
+# GPL3 Usar sin ningun consentimiento.
+# Importante tener instalado netstat.
+###############################################
+
+# parameters
+PARAMETER=$1
+PORT=$2
+
+# COLORs
+PARPADEO="\e[5;32m"
+OFF="\e[0m"
+GREEN="\e[32m"
+RED="\e[31m"
+AZUL="\e[36m"
+
+# carter para que indique que arg debe de pasarle al script
+function usar {
+  echo -e "$RED[!] EJECUTAR COMO ROOT $OFF"
+  cat <<EOF
+  Use: sudo port.sh -h <para la ayuda>
+EOF
+  exit 1
+}
+
+function helpme() {
+  echo "============================================================================="
+  echo -e "$RED [!] $GREEN Ayuda $OFF"
+  echo -e "$GREEN -p $AZUL Muestra las conexiones para el protocolo TCP y UDP. $OFF"
+  echo -e "$GREEN -u $AZUL Lista todos los puertos UDP. $OFF"
+  echo -e "$GREEN -t $AZUL Lista todos los puertos TCP. $OFF"
+  echo -e "$GREEN -a $AZUL Visualiza todas las conexiones activas del sistema. $OFF"
+  echo -e "$GREEN -n $AZUL Muestra el numero de puerto. $OFF"
+  echo -e "$GREEN -tan port  -> $AZUL Convinacion recomendada. Busca si el puerto esta open o no$OFF"
+
+  echo "============================================================================="
+}
+
+function ban() {
+  echo "========================================================="
+  echo -e "$RED [*] $GREEN Buscando puertos en escucha en el host:$PARPADEO $HOSTNAME" $OFF
+  echo "========================================================="
+  sleep 1.5
+}
+
+
+
+
+# verificamos que los argumentos sean los necesarios para ejecutar
+if [ $# -ne 1 ] && [ $# -ne 2 ]; then
+  usar
+elif [ "$PARAMETER" = "-h" ]; then # Verificar si ingresa el parametro para la ayuda
+  helpme
+fi
+
+case "$PARAMETER" in
+"-p")
+  ban
+  netstat -p
+  ;;
+"-u")
+  ban
+  netstat -u
+  ;;
+"-t")
+  ban
+  netstat -t
+  ;;
+"-a")
+  ban
+  netstat -a
+  ;;
+
+"-tan")
+  ban
+  netstat -tan | grep :$PORT
+  ;;
+esac
