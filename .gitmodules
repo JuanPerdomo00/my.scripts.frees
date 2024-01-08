@@ -1,0 +1,12 @@
+[submodule "scripts-python/genpy"]
+	path = scripts-python/genpy
+	url = https://github.com/JuanPerdomo00/generador-password.git
+[submodule "scripts-python/showfile"]
+	path = scripts-python/showfile
+	url = https://github.com/JuanPerdomo00/showfile.git
+[submodule "scripts-python/touchpy"]
+	path = scripts-python/touchpy
+	url = https://github.com/JuanPerdomo00/touchpy.git
+[submodule "script_bash/rmkernel"]
+	path = script_bash/rmkernel
+	url = https://github.com/JuanPerdomo00/rmkernel.git
