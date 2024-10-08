@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+# Copyright (C) 2024 Jakepy
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3.
+
+name_folder_projects=$1
+
+function main {
+
+	if [ -z "$name_folder_projects" ]; then
+		echo "Error: required directory name."
+		echo "Use: $0 <Name Directory>"
+		exit 1
+	fi
+
+	if [ -d "$name_folder_projects" ]; then
+		echo "Error: '$name_folder_projects' exists"
+		exit 1
+	fi
+
+	mkdir -p "$name_folder_projects/lib" "$name_folder_projects/src" && touch "$(pwd)/$name_folder_projects/src/App.java"
+
+	echo "Project directory created in the path $(pwd)/$name_folder_projects"
+}
+
+main
